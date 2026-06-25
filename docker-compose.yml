@@ -1,0 +1,23 @@
+name: aerolog-tools
+
+services:
+  moive:
+    build:
+      context: .
+      args:
+        VITE_BASE_PATH: /tools/moive/
+        VITE_CMS_API_BASE: /tools/moive/cms-api/api.php/provide/vod/
+    container_name: aerolog-tools-moive
+    restart: unless-stopped
+    networks:
+      aerolog_edge:
+      aerolog_internal:
+        aliases:
+          - moive
+    mem_limit: 96m
+
+networks:
+  aerolog_edge:
+    external: true
+  aerolog_internal:
+    external: true
